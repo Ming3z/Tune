@@ -1,0 +1,41 @@
+# 构建的应用程序文件
+*.apk
+*.ap_
+
+# dex 虚拟机的文件
+*.dex
+
+# Java 类文件
+*.class
+
+# 生成的文件
+bin/
+gen/
+build/
+release/
+
+# 本地配置文件（sdk 路径等）
+local.properties
+
+# Windows 缩略图数据库
+Thumbs.db
+
+# OSX 文件
+.DS_Store
+
+# Eclipse 项目文件
+.classpath
+.project
+
+# Android Studio
+.idea
+.gradle
+
+# 签名文件
+.signing/
+
+# 用户特定的配置
+*.iml
+.cxx
+.externalNativeBuild
+._*
