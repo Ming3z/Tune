@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TextCheckBox">
+        <!-- 文本 -->
+        <attr name="tcbText" format="reference|string" />
+    </declare-styleable>
+
+    <declare-styleable name="SmoothCheckBox">
+        <attr name="duration" format="integer" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="color_tick" format="color" />
+        <attr name="color_checked" format="color" />
+        <attr name="color_unchecked" format="color" />
+        <attr name="color_unchecked_stroke" format="color" />
+    </declare-styleable>
+
+    <!-- 音量状态进度条 -->
+    <declare-styleable name="VolumeProgress">
+        <!-- 标题 -->
+        <attr name="vpTitle" format="reference|string" />
+        <!-- 音量类型 -->
+        <attr name="vpType" format="integer">
+            <!-- AudioManager.STREAM_VOICE_CALL -->
+            <enum name="voice_call" value="0" />
+            <!-- AudioManager.STREAM_SYSTEM -->
+            <enum name="system" value="1" />
+            <!-- AudioManager.STREAM_RING -->
+            <enum name="ring" value="2" />
+            <!-- AudioManager.STREAM_MUSIC -->
+            <enum name="music" value="3" />
+            <!-- AudioManager.STREAM_ALARM -->
+            <enum name="alarm" value="4" />
+            <!-- AudioManager.STREAM_NOTIFICATION -->
+            <enum name="notification" value="5" />
+            <!-- AudioManager.STREAM_DTMF -->
+            <enum name="dtmf" value="8" />
+            <!-- AudioManager.STREAM_ACCESSIBILITY -->
+            <enum name="accessibility" value="10" />
+        </attr>
+    </declare-styleable>
+
+</resources>

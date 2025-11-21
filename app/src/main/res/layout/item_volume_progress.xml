@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="state"
+            type="com.ymk.tune.widget.VolumeProgress" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 标题 -->
+        <TextView
+            android:id="@+id/ivp_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="媒体" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- 进度条 -->
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/ivp_progress"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:maxHeight="24dp"
+                android:progress="@{state.progressLiveData}"
+                android:progressDrawable="@drawable/progress_drawable"
+                android:thumb="@null" />
+
+            <!-- 进度文字显示 -->
+            <TextView
+                android:id="@+id/ivp_progress_text"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:text="@{String.valueOf(state.progressLiveData)}"
+                android:textSize="16sp"
+                tools:text="100" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

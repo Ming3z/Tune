@@ -1,27 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".pages.volume.VolumeTestActivity">
 
     <data>
 
+        <import type="android.media.AudioManager" />
+
+        <variable
+            name="vm"
+            type="com.ymk.tune.MainVm" />
+
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:scrollbars="none">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="#f2f3f5"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- 声音模式 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:text="声音模式"
+                android:textColor="#606163"
+                android:textSize="12dp" />
+
+            <com.hjq.shape.layout.ShapeLinearLayout
+                android:id="@+id/sl_ring_mode"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                app:shape_radius="20dp"
+                app:shape_solidColor="@color/white">
+
+                <com.ymk.tune.widget.TextCheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:checked="@{vm.ringModeLvData == AudioManager.RINGER_MODE_NORMAL}"
+                    app:tcbText="响铃" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="8dp"
+                    android:background="#FF808080" />
+
+                <com.ymk.tune.widget.TextCheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:checked="@{vm.ringModeLvData == AudioManager.RINGER_MODE_VIBRATE}"
+                    app:tcbText="振动" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="8dp"
+                    android:background="#FF808080" />
+
+                <com.ymk.tune.widget.TextCheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:checked="@{vm.ringModeLvData == AudioManager.RINGER_MODE_SILENT}"
+                    app:tcbText="静音" />
+
+            </com.hjq.shape.layout.ShapeLinearLayout>
+
+            <!-- 音量 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:text="音量"
+                android:textColor="#606163"
+                android:textSize="12sp" />
+
+            <com.hjq.shape.layout.ShapeLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:shape_radius="20dp"
+                app:shape_solidColor="@color/white">
+
+                <com.ymk.tune.widget.VolumeProgress
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="@{vm.voiceCallLvData}"
+                    app:vpTitle="通话"
+                    app:vpType="voice_call" />
+
+                <com.ymk.tune.widget.VolumeProgress
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="@{vm.ringLvData}"
+                    app:vpTitle="响铃，通知，系统默认音"
+                    app:vpType="ring" />
+
+                <com.ymk.tune.widget.VolumeProgress
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="@{vm.musicLvData}"
+                    app:vpTitle="媒体"
+                    app:vpType="music" />
+
+                <com.ymk.tune.widget.VolumeProgress
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="@{vm.alarmLvData}"
+                    app:vpTitle="闹钟"
+                    app:vpType="alarm" />
+
+                <com.ymk.tune.widget.VolumeProgress
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="@{vm.systemLvData}"
+                    app:vpTitle="system"
+                    app:vpType="system" />
+
+                <com.ymk.tune.widget.VolumeProgress
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="@{vm.notificationLvData}"
+                    app:vpTitle="notification"
+                    app:vpType="notification" />
+
+                <com.ymk.tune.widget.VolumeProgress
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="@{vm.dtmfLvData}"
+                    app:vpTitle="dtmf"
+                    app:vpType="dtmf" />
+
+                <com.ymk.tune.widget.VolumeProgress
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:progress="@{vm.accessibilityLvData}"
+                    app:vpTitle="accessibility"
+                    app:vpType="accessibility" />
+
+            </com.hjq.shape.layout.ShapeLinearLayout>
+
+            <!-- 没有更多了 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:text="没有更多啦~"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </layout>
