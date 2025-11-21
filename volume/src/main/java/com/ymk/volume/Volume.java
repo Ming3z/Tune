@@ -192,7 +192,10 @@ public class Volume {
      * 注册
      * <p>
      * 工具类内部根据生命周期，自行完成 {@link #init(Context)} 和 {@link #exit()} 方法
+     *
+     * @deprecated 只适合在单个 Activity 中使用的情况
      */
+    @Deprecated
     public void register(@NonNull AppCompatActivity activity) {
         init(activity);
         activity.getLifecycle().addObserver(new DefaultLifecycleObserver() {
