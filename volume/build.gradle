@@ -19,13 +19,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
     }
 
-    android.libraryVariants.configureEach { variant ->
-        // aar 输出文件名配置
-        variant.outputs.configureEach { output ->
-            outputFileName = "${rootProject.name}-${android.defaultConfig.versionName}.aar"
-        }
-    }
-
     publishing {
         singleVariant("release") {
             withSourcesJar()
