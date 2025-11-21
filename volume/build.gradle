@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    namespace 'com.ymk.volume'
+
+    compileSdkVersion 36
+
+    defaultConfig {
+        minSdk 28
+        versionCode 1
+        versionName "0.1"
+    }
+
+    // 支持 Java JDK 8
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    android.libraryVariants.configureEach { variant ->
+        // aar 输出文件名配置
+        variant.outputs.configureEach { output ->
+            outputFileName = "${rootProject.name}-${android.defaultConfig.versionName}.aar"
+        }
+    }
+}
+
+dependencies {
+    implementation libs.appcompat
+}
